@@ -8,8 +8,14 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
+
+# Herokuではsqlite3は使えないため，以下を追加
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+# gem 'sqlite3'
+gem 'sqlite3', groups: %w(test development), require: false
+gem 'pg', groups: %w(production), require: false
+
+
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
