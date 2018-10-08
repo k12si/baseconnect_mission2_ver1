@@ -26,14 +26,13 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    respond_to do |format|
-      if @article.save
-        format.html { redirect_to @article, notice: 'Article was successfully created.' }
-        format.json { render :show, status: :created, location: @article }
-      else
-        format.html { render :new }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
-      end
+    # アカウントと記事の紐付け処理
+    @article.user_id = current_account.id
+
+    if @article.save
+      redirect_to root_path
+    else
+      render :new
     end
   end
 

@@ -12,7 +12,19 @@
 
   <body>
     <%= render 'layouts/header' %>
+
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <div id="main">
+      <%= image_tag('main-img.jpg') %>
+    </div>
+
+    <%= csrf_meta_tags %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
     <%= yield %>
+
     <%= render 'layouts/footer' %>
   </body>
 </html>
