@@ -10,6 +10,8 @@ class ArticlesController < ApplicationController
   # GET /articles/1
   # GET /articles/1.json
   def show
+    @article = Article.find(params[:id])
+    REDIS.zincrby "articles/all", 1, "#{@article.id}"
   end
 
   # GET /articles/new

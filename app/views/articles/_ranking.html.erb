@@ -1,0 +1,10 @@
+<div id="sidebar">
+  <h2>★PV数ランキング</h2>
+  <ul>
+    <% set_ranking_data.each do |article| %>
+      <li><%= link_to article[0].title , article[0]%><span>(<%= article[1] %>PV)</span></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="clear"></div>
