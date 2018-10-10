@@ -2,10 +2,14 @@
   <div id="article_list">
     <% @articles.reverse_each do |article| %>
       <div>
-        <p><%= current_account %></p>
+
         <h2><%= link_to article.title, article %></h2>
         <p><%= article.created_at %></p>
 
+        <% if article.user_id == current_account.id %>
+          <%= link_to '編集', edit_article_path(article) %>
+          <%= link_to '削除', article, method: :delete, data: { confirm: 'Are you sure?'} %>
+        <% end %>
 
       </div>
     <% end %>
